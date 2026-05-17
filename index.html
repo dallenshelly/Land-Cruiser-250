@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Cruiser - The Ultimate Off-Road Vehicle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Your favicon -->
+    <link rel="icon" type="image/png" href="4-2-toyota-logo-picture.png">
+    
+    <!-- Optional: Multiple sizes for better compatibility -->
+    <link rel="icon" type="image/png" sizes="16x16" href="4-2-toyota-logo-picture.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="4-2-toyota-logo-picture.png">
+    
+    <!-- For Apple devices -->
+    <link rel="apple-touch-icon" href="4-2-toyota-logo-picture.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero-title { position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 50; pointer-events: none; }
+        .hero-title h1 { font-size: clamp(36px, 8vw, 72px); font-weight: 900; letter-spacing: 12px; background: linear-gradient(135deg, #FFD700 0%, #FFAA00 50%, #FFD700 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 16px; }
+        .hero-title p { font-size: clamp(12px, 2vw, 18px); letter-spacing: 6px; color: var(--text-secondary); text-transform: uppercase; }
+    </style>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="particles-bg" id="particles"></div>
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-text">LOADING</div>
+        </div>
+    </div>
+
+    <div id="error-container" class="hidden">
+        <div class="error-content">
+            <h1 id="error-title">Error</h1>
+            <p id="error-message">An error occurred.</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="4-2-toyota-logo-picture.png" alt="Toyota" class="logo-img">
+            <span class="logo-text">Land Cruiser 250</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-title">
+            <h1>LAND CRUISER</h1>
+            <p>The Legend Reborn</p>
+        </div>
+        <canvas id="canvas"></canvas>
+        <div id="cta-container" class="cta-container">
+            <button id="cta-btn" class="cta-btn">
+                <span class="cta-text">Discover Land Cruiser</span>
+                <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </div>
+    </main>
+
+    <section id="specs" class="specs-section">
+        <div class="specs-container">
+            <h2 class="specs-title">Land Cruiser 250</h2>
+            <p class="specs-subtitle">The Legend Reborn</p>
+
+            <div class="specs-grid">
+                <div class="spec-card fade-in-section">
+                    <div class="spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Power</h3>
+                    <p class="spec-value">400 HP</p>
+                    <p class="spec-label">Maximum Output</p>
+                </div>
+
+                <div class="spec-card fade-in-section">
+                    <div class="spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>Torque</h3>
+                    <p class="spec-value">600 NM</p>
+                    <p class="spec-label">Peak Torque</p>
+                </div>
+
+                <div class="spec-card fade-in-section">
+                    <div class="spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+                        </svg>
+                    </div>
+                    <h3>0-100</h3>
+                    <p class="spec-value">5.4s</p>
+                    <p class="spec-label">Acceleration</p>
+                </div>
+
+                <div class="spec-card fade-in-section">
+                    <div class="spec-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="6" width="20" height="12" rx="2"/>
+                            <circle cx="6" cy="12" r="2"/>
+                            <circle cx="18" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>Drive</h3>
+                    <p class="spec-value">AWD</p>
+                    <p class="spec-label">Terrain Response</p>
+                </div>
+            </div>
+
+            <div class="features-list fade-in-section">
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Full-time 4WD with locking differentials</li>
+                    <li>Configurable Terrain Response</li>
+                    <li>Air suspension with adjustable ride height</li>
+                    <li>Premium leather interior</li>
+                    <li>Interactive Driver Display</li>
+                    <li>Wade Sensing (900mm depth)</li>
+                </ul>
+            </div>
+
+            <a href="preorder.html" class="order-btn fade-in-section">
+                Pre-order Now
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="gallery-section">
+        <h2 class="gallery-title fade-in-section">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item scale-in">
+                <img src="interior.jpg" alt="Interior">
+                <span class="item-label">Luxury Cabin</span>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="xtirior.jpg" alt="Exterior">
+                <span class="item-label">Bold Design</span>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="off-road.jpg" alt="Off-Road">
+                <span class="item-label">Terrain Mastery</span>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="perform.jpg" alt="Performance">
+                <span class="item-label">Power Unleashed</span>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="technology.jpg" alt="Technology">
+                <span class="item-label">Smart Features</span>
+            </div>
+            <div class="gallery-item scale-in">
+                <img src="primium.jpg" alt="Premium">
+                <span class="item-label">Premium Ride</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="colors-section">
+        <h2 class="gallery-title fade-in-section">Choose Your Color</h2>
+        <div class="colors-grid">
+            <div class="color-item fade-in-section">
+                <img src="yellow.jpg" alt="Yellow">
+                <span class="color-name">Desert Yellow</span>
+            </div>
+            <div class="color-item fade-in-section">
+                <img src="gray.jpg" alt="Gray">
+                <span class="color-name">Shadow Gray</span>
+            </div>
+            <div class="color-item fade-in-section">
+                <img src="white.jpg" alt="White">
+                <span class="color-name">Pearl White</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="contact-section">
+        <div class="contact-container fade-in-section">
+            <h2>Reserve Your Land Cruiser</h2>
+            <p>Interested in the Land Cruiser 250? Place your reservation today.</p>
+            <a href="checkout.html" class="submit-btn">Proceed to Checkout</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Toyota Automotive. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
